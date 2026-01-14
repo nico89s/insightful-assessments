@@ -19,7 +19,7 @@ export const AssessmentProvider: React.FC<{ children: React.ReactNode }> = ({ ch
   const [currentAssessment, setCurrentAssessment] = useState<Assessment | null>(null);
   const [questions, setQuestions] = useState<Question[]>([]);
 
-  const startAssessment = useCallback((assessmentTypeId: string, userId: string) => {
+  const startAssessment = useCallback((assessmentTypeId: string, userId: string, projectId: string = 'proj-1', companyId: string = 'comp-1') => {
     const questionSet = assessmentTypeId === 'big-five' ? bigFiveQuestions : spatialQuestions;
     setQuestions(questionSet);
     
@@ -27,6 +27,8 @@ export const AssessmentProvider: React.FC<{ children: React.ReactNode }> = ({ ch
       id: `assessment-${Date.now()}`,
       userId,
       assessmentTypeId,
+      projectId,
+      companyId,
       status: 'in-progress',
       startedAt: new Date(),
       currentQuestion: 0,
