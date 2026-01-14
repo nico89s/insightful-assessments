@@ -28,9 +28,9 @@ import DashboardLayout from '@/components/layout/DashboardLayout';
 
 const ResultDetails: React.FC = () => {
   const navigate = useNavigate();
-  const { id } = useParams<{ id: string }>();
+  const { resultId } = useParams<{ resultId: string }>();
   
-  const assessment = mockAssessments.find(a => a.id === id);
+  const assessment = mockAssessments.find(a => a.id === resultId);
   const user = assessment ? getUserById(assessment.userId) : undefined;
   const company = assessment?.companyId ? getCompanyById(assessment.companyId) : undefined;
   const project = assessment?.projectId ? getProjectById(assessment.projectId) : undefined;
