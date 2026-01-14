@@ -2,8 +2,8 @@ import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
+import KickHRLogo from '@/components/KickHRLogo';
 import { 
-  Brain, 
   LayoutDashboard, 
   ClipboardList, 
   Users, 
@@ -97,11 +97,8 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <Link to="/dashboard" className="flex items-center gap-2">
-              <div className="p-1.5 rounded-lg bg-accent">
-                <Brain className="w-5 h-5 text-accent-foreground" />
-              </div>
-              <span className="font-display font-bold text-lg">HR Assess</span>
+            <Link to="/dashboard" className="flex items-center">
+              <KickHRLogo size="md" />
             </Link>
 
             {/* Desktop Navigation */}
@@ -149,12 +146,7 @@ const DashboardLayout: React.FC<DashboardLayoutProps> = ({ children }) => {
                 <SheetContent side="right" className="w-64 p-0">
                   <div className="flex flex-col h-full">
                     <div className="p-4 border-b">
-                      <div className="flex items-center gap-2">
-                        <div className="p-1.5 rounded-lg bg-accent">
-                          <Brain className="w-5 h-5 text-accent-foreground" />
-                        </div>
-                        <span className="font-display font-bold">HR Assess</span>
-                      </div>
+                      <KickHRLogo size="sm" />
                     </div>
                     <nav className="flex-1 p-4 space-y-1">
                       <NavLinks />
