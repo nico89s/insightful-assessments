@@ -2,6 +2,22 @@
 
 export type UserRole = 'user' | 'assessor' | 'admin';
 
+export interface Company {
+  id: string;
+  name: string;
+  industry: string;
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  companyId: string;
+  description: string;
+  startDate: Date;
+  endDate?: Date;
+  status: 'active' | 'completed' | 'upcoming';
+}
+
 export interface User {
   id: string;
   email: string;
@@ -9,6 +25,11 @@ export interface User {
   role: UserRole;
   avatar?: string;
   createdAt: Date;
+  companyId?: string;
+  projectId?: string;
+  position?: string;
+  department?: string;
+  phone?: string;
 }
 
 export interface AssessmentType {
@@ -43,6 +64,8 @@ export interface Assessment {
   id: string;
   userId: string;
   assessmentTypeId: string;
+  projectId: string;
+  companyId: string;
   status: 'not-started' | 'in-progress' | 'completed';
   startedAt?: Date;
   completedAt?: Date;
@@ -62,13 +85,132 @@ export interface AssessmentScore {
   breakdown: { trait: string; score: number; percentile: number }[];
 }
 
+// Mock Companies
+export const mockCompanies: Company[] = [
+  { id: 'c-1', name: 'TechCorp Indonesia', industry: 'Technology' },
+  { id: 'c-2', name: 'Bank Nusantara', industry: 'Banking & Finance' },
+  { id: 'c-3', name: 'Retail Maju Bersama', industry: 'Retail' },
+];
+
+// Mock Projects
+export const mockProjects: Project[] = [
+  { 
+    id: 'p-1', 
+    name: 'Management Trainee 2024', 
+    companyId: 'c-1', 
+    description: 'Annual MT recruitment program',
+    startDate: new Date('2024-03-01'),
+    endDate: new Date('2024-06-30'),
+    status: 'active'
+  },
+  { 
+    id: 'p-2', 
+    name: 'Senior Developer Hiring', 
+    companyId: 'c-1', 
+    description: 'Tech team expansion',
+    startDate: new Date('2024-04-01'),
+    status: 'active'
+  },
+  { 
+    id: 'p-3', 
+    name: 'Leadership Assessment Q2', 
+    companyId: 'c-2', 
+    description: 'Quarterly leadership potential assessment',
+    startDate: new Date('2024-04-15'),
+    endDate: new Date('2024-05-15'),
+    status: 'active'
+  },
+  { 
+    id: 'p-4', 
+    name: 'Store Manager Recruitment', 
+    companyId: 'c-3', 
+    description: 'Hiring store managers for new locations',
+    startDate: new Date('2024-02-01'),
+    endDate: new Date('2024-04-30'),
+    status: 'completed'
+  },
+];
+
 // Mock Users
 export const mockUsers: User[] = [
-  { id: '1', email: 'admin@hrplatform.com', name: 'Sarah Admin', role: 'admin', createdAt: new Date('2024-01-01') },
-  { id: '2', email: 'assessor@hrplatform.com', name: 'Michael Chen', role: 'assessor', createdAt: new Date('2024-02-15') },
-  { id: '3', email: 'user@company.com', name: 'Emily Johnson', role: 'user', createdAt: new Date('2024-03-20') },
-  { id: '4', email: 'jane.doe@company.com', name: 'Jane Doe', role: 'user', createdAt: new Date('2024-04-10') },
-  { id: '5', email: 'john.smith@company.com', name: 'John Smith', role: 'user', createdAt: new Date('2024-04-15') },
+  { 
+    id: '1', 
+    email: 'admin@kickhr.com', 
+    name: 'Sarah Admin', 
+    role: 'admin', 
+    createdAt: new Date('2024-01-01'),
+    position: 'Platform Administrator',
+    department: 'Operations'
+  },
+  { 
+    id: '2', 
+    email: 'michael.chen@kickhr.com', 
+    name: 'Michael Chen', 
+    role: 'assessor', 
+    createdAt: new Date('2024-02-15'),
+    position: 'Senior HR Consultant',
+    department: 'Assessment Services'
+  },
+  { 
+    id: '3', 
+    email: 'emily.johnson@techcorp.com', 
+    name: 'Emily Johnson', 
+    role: 'user', 
+    createdAt: new Date('2024-03-20'),
+    companyId: 'c-1',
+    projectId: 'p-1',
+    position: 'Management Trainee Candidate',
+    department: 'Human Resources',
+    phone: '+62 812 3456 7890'
+  },
+  { 
+    id: '4', 
+    email: 'jane.doe@techcorp.com', 
+    name: 'Jane Doe', 
+    role: 'user', 
+    createdAt: new Date('2024-04-10'),
+    companyId: 'c-1',
+    projectId: 'p-1',
+    position: 'Management Trainee Candidate',
+    department: 'Marketing',
+    phone: '+62 813 4567 8901'
+  },
+  { 
+    id: '5', 
+    email: 'john.smith@techcorp.com', 
+    name: 'John Smith', 
+    role: 'user', 
+    createdAt: new Date('2024-04-15'),
+    companyId: 'c-1',
+    projectId: 'p-2',
+    position: 'Senior Developer Candidate',
+    department: 'Engineering',
+    phone: '+62 814 5678 9012'
+  },
+  { 
+    id: '6', 
+    email: 'ahmad.rizki@banknusantara.com', 
+    name: 'Ahmad Rizki', 
+    role: 'user', 
+    createdAt: new Date('2024-04-18'),
+    companyId: 'c-2',
+    projectId: 'p-3',
+    position: 'Branch Manager Candidate',
+    department: 'Branch Operations',
+    phone: '+62 815 6789 0123'
+  },
+  { 
+    id: '7', 
+    email: 'siti.nurhaliza@retailmaju.com', 
+    name: 'Siti Nurhaliza', 
+    role: 'user', 
+    createdAt: new Date('2024-02-20'),
+    companyId: 'c-3',
+    projectId: 'p-4',
+    position: 'Store Manager Candidate',
+    department: 'Retail Operations',
+    phone: '+62 816 7890 1234'
+  },
 ];
 
 // Assessment Types
@@ -353,6 +495,8 @@ export const mockAssessments: Assessment[] = [
     id: 'a-1',
     userId: '3',
     assessmentTypeId: 'big-five',
+    projectId: 'p-1',
+    companyId: 'c-1',
     status: 'completed',
     startedAt: new Date('2024-04-15T09:00:00'),
     completedAt: new Date('2024-04-15T09:12:00'),
@@ -373,6 +517,8 @@ export const mockAssessments: Assessment[] = [
     id: 'a-2',
     userId: '4',
     assessmentTypeId: 'big-five',
+    projectId: 'p-1',
+    companyId: 'c-1',
     status: 'completed',
     startedAt: new Date('2024-04-16T14:00:00'),
     completedAt: new Date('2024-04-16T14:15:00'),
@@ -393,6 +539,8 @@ export const mockAssessments: Assessment[] = [
     id: 'a-3',
     userId: '5',
     assessmentTypeId: 'spatial-reasoning',
+    projectId: 'p-2',
+    companyId: 'c-1',
     status: 'completed',
     startedAt: new Date('2024-04-17T10:00:00'),
     completedAt: new Date('2024-04-17T10:08:00'),
@@ -410,10 +558,56 @@ export const mockAssessments: Assessment[] = [
     id: 'a-4',
     userId: '3',
     assessmentTypeId: 'spatial-reasoning',
+    projectId: 'p-1',
+    companyId: 'c-1',
     status: 'in-progress',
     startedAt: new Date('2024-04-18T11:00:00'),
     currentQuestion: 3,
     answers: [],
+  },
+  {
+    id: 'a-5',
+    userId: '6',
+    assessmentTypeId: 'big-five',
+    projectId: 'p-3',
+    companyId: 'c-2',
+    status: 'completed',
+    startedAt: new Date('2024-04-18T09:00:00'),
+    completedAt: new Date('2024-04-18T09:15:00'),
+    currentQuestion: 25,
+    answers: [],
+    score: {
+      overall: 75,
+      breakdown: [
+        { trait: 'Openness', score: 70, percentile: 65 },
+        { trait: 'Conscientiousness', score: 85, percentile: 82 },
+        { trait: 'Extraversion', score: 72, percentile: 68 },
+        { trait: 'Agreeableness', score: 80, percentile: 75 },
+        { trait: 'Neuroticism', score: 48, percentile: 40 },
+      ],
+    },
+  },
+  {
+    id: 'a-6',
+    userId: '7',
+    assessmentTypeId: 'big-five',
+    projectId: 'p-4',
+    companyId: 'c-3',
+    status: 'completed',
+    startedAt: new Date('2024-03-15T10:00:00'),
+    completedAt: new Date('2024-03-15T10:12:00'),
+    currentQuestion: 25,
+    answers: [],
+    score: {
+      overall: 88,
+      breakdown: [
+        { trait: 'Openness', score: 82, percentile: 78 },
+        { trait: 'Conscientiousness', score: 95, percentile: 97 },
+        { trait: 'Extraversion', score: 90, percentile: 92 },
+        { trait: 'Agreeableness', score: 85, percentile: 80 },
+        { trait: 'Neuroticism', score: 38, percentile: 28 },
+      ],
+    },
   },
 ];
 
@@ -425,4 +619,29 @@ export const getUserById = (id: string): User | undefined => {
 // Helper function to get assessment type by ID
 export const getAssessmentTypeById = (id: string): AssessmentType | undefined => {
   return assessmentTypes.find(type => type.id === id);
+};
+
+// Helper function to get company by ID
+export const getCompanyById = (id: string): Company | undefined => {
+  return mockCompanies.find(company => company.id === id);
+};
+
+// Helper function to get project by ID
+export const getProjectById = (id: string): Project | undefined => {
+  return mockProjects.find(project => project.id === id);
+};
+
+// Helper function to get projects by company ID
+export const getProjectsByCompanyId = (companyId: string): Project[] => {
+  return mockProjects.filter(project => project.companyId === companyId);
+};
+
+// Helper function to get assessments by project ID
+export const getAssessmentsByProjectId = (projectId: string): Assessment[] => {
+  return mockAssessments.filter(assessment => assessment.projectId === projectId);
+};
+
+// Helper function to get assessments by company ID
+export const getAssessmentsByCompanyId = (companyId: string): Assessment[] => {
+  return mockAssessments.filter(assessment => assessment.companyId === companyId);
 };
