@@ -101,7 +101,18 @@ const UserDashboard: React.FC = () => {
                 <Card 
                   key={type.id} 
                   className="group hover:shadow-lg transition-all duration-300 cursor-pointer"
-                  onClick={() => navigate(`/assessment/${type.id}`)}
+                  onClick={() => {
+                    if (status === 'completed' && assessment) {
+                      navigate('/assessment/results', { 
+                        state: { 
+                          score: assessment.score, 
+                          assessmentType: type 
+                        } 
+                      });
+                    } else {
+                      navigate(`/assessment/${type.id}`);
+                    }
+                  }}
                 >
                   <CardHeader className="flex flex-row items-start gap-4">
                     <div className="p-3 rounded-xl bg-accent/10 text-accent group-hover:bg-accent group-hover:text-accent-foreground transition-colors">
@@ -170,7 +181,18 @@ const UserDashboard: React.FC = () => {
                       <div 
                         key={assessment.id}
                         className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors cursor-pointer"
-                        onClick={() => navigate(`/assessment/${type.id}`)}
+                        onClick={() => {
+                          if (assessment.status === 'completed' && assessment.score) {
+                            navigate('/assessment/results', { 
+                              state: { 
+                                score: assessment.score, 
+                                assessmentType: type 
+                              } 
+                            });
+                          } else {
+                            navigate(`/assessment/${type.id}`);
+                          }
+                        }}
                       >
                         <div className="flex items-center gap-3">
                           <div className="p-2 rounded-lg bg-accent/10 text-accent">
