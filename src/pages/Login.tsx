@@ -5,8 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { Brain, Users, Shield, AlertCircle } from 'lucide-react';
+import { Users, Shield, AlertCircle, ClipboardList } from 'lucide-react';
 import { UserRole } from '@/lib/mockData';
+import KickHRLogo from '@/components/KickHRLogo';
 
 const LoginPage: React.FC = () => {
   const navigate = useNavigate();
@@ -41,17 +42,14 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen gradient-hero flex items-center justify-center p-4">
+    <div className="min-h-screen bg-gradient-to-br from-primary/10 via-background to-primary/5 flex items-center justify-center p-4">
       <div className="w-full max-w-md animate-fade-in">
         {/* Logo */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-accent mb-4">
-            <Brain className="w-8 h-8 text-accent-foreground" />
+          <div className="inline-flex items-center justify-center mb-4">
+            <KickHRLogo size="lg" />
           </div>
-          <h1 className="text-3xl font-display font-bold text-primary-foreground">
-            HR Assess
-          </h1>
-          <p className="text-primary-foreground/70 mt-2">
+          <p className="text-muted-foreground mt-2">
             Professional Assessment Platform
           </p>
         </div>
@@ -130,7 +128,7 @@ const LoginPage: React.FC = () => {
                   className="w-full justify-start gap-3"
                   onClick={() => handleDemoLogin('assessor')}
                 >
-                  <Brain className="w-4 h-4 text-accent" />
+                  <ClipboardList className="w-4 h-4 text-primary" />
                   <div className="text-left">
                     <div className="font-medium">Assessor</div>
                     <div className="text-xs text-muted-foreground">Review & analyze results</div>

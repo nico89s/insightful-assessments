@@ -318,19 +318,24 @@ const AssessorDashboard: React.FC = () => {
                   return (
                     <div 
                       key={assessment.id}
-                      className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors cursor-pointer"
-                      onClick={() => navigate(`/assessor/result/${assessment.id}`)}
+                      className="flex items-center justify-between p-4 hover:bg-muted/50 transition-colors"
                     >
-                      <div className="flex items-center gap-4">
+                      <div 
+                        className="flex items-center gap-4 cursor-pointer flex-1"
+                        onClick={() => navigate(`/assessor/employee/${user.id}`)}
+                      >
                         <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-medium">
                           {user.name.charAt(0)}
                         </div>
                         <div>
-                          <div className="font-medium">{user.name}</div>
+                          <div className="font-medium hover:underline">{user.name}</div>
                           <div className="text-sm text-muted-foreground">{user.email}</div>
                         </div>
                       </div>
-                      <div className="flex items-center gap-6">
+                      <div 
+                        className="flex items-center gap-6 cursor-pointer"
+                        onClick={() => navigate(`/assessor/result/${assessment.id}`)}
+                      >
                         <div className="flex items-center gap-2 text-muted-foreground">
                           <div className="p-1.5 rounded-lg bg-muted">
                             {getIcon(type.icon)}

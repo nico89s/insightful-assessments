@@ -6,34 +6,34 @@
 
 @layer base {
   :root {
-    /* Core brand colors - Professional deep blue palette */
-    --background: 210 20% 98%;
-    --foreground: 222 47% 11%;
+    /* Kick HR brand colors - Cyan/Blue inspired by Kickai.id */
+    --background: 200 20% 98%;
+    --foreground: 200 50% 10%;
 
     --card: 0 0% 100%;
-    --card-foreground: 222 47% 11%;
+    --card-foreground: 200 50% 10%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover-foreground: 200 50% 10%;
 
-    /* Deep navy primary */
-    --primary: 222 47% 20%;
-    --primary-foreground: 210 40% 98%;
+    /* Kickai cyan primary */
+    --primary: 195 100% 45%;
+    --primary-foreground: 0 0% 100%;
 
-    /* Soft blue-gray secondary */
-    --secondary: 214 32% 91%;
-    --secondary-foreground: 222 47% 20%;
+    /* Light cyan secondary */
+    --secondary: 195 40% 92%;
+    --secondary-foreground: 195 100% 30%;
 
     /* Muted surfaces */
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 200 20% 96%;
+    --muted-foreground: 200 15% 45%;
 
-    /* Teal accent */
-    --accent: 173 58% 39%;
+    /* Cyan accent */
+    --accent: 195 100% 45%;
     --accent-foreground: 0 0% 100%;
 
-    /* Warm amber highlight */
-    --highlight: 38 92% 50%;
+    /* Highlight */
+    --highlight: 195 100% 50%;
     --highlight-foreground: 0 0% 100%;
 
     /* Success/Error states */
@@ -41,40 +41,40 @@
     --success-foreground: 0 0% 100%;
     
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 0 0% 100%;
 
     /* Info state */
-    --info: 199 89% 48%;
+    --info: 195 100% 45%;
     --info-foreground: 0 0% 100%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 173 58% 39%;
+    --border: 200 25% 88%;
+    --input: 200 25% 88%;
+    --ring: 195 100% 45%;
 
     --radius: 0.75rem;
 
     /* Sidebar */
-    --sidebar-background: 222 47% 11%;
-    --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 173 58% 39%;
+    --sidebar-background: 200 50% 10%;
+    --sidebar-foreground: 200 20% 96%;
+    --sidebar-primary: 195 100% 45%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 222 47% 20%;
-    --sidebar-accent-foreground: 210 40% 96%;
-    --sidebar-border: 222 47% 20%;
-    --sidebar-ring: 173 58% 39%;
+    --sidebar-accent: 200 50% 15%;
+    --sidebar-accent-foreground: 200 20% 96%;
+    --sidebar-border: 200 50% 15%;
+    --sidebar-ring: 195 100% 45%;
 
     /* Custom gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(222 47% 25%) 50%, hsl(173 58% 30%) 100%);
-    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(210 40% 98%) 100%);
-    --gradient-accent: linear-gradient(135deg, hsl(173 58% 39%) 0%, hsl(173 58% 50%) 100%);
-    --gradient-subtle: linear-gradient(180deg, hsl(210 20% 98%) 0%, hsl(214 32% 96%) 100%);
+    --gradient-hero: linear-gradient(135deg, hsl(200 50% 10%) 0%, hsl(195 80% 25%) 50%, hsl(195 100% 45%) 100%);
+    --gradient-card: linear-gradient(180deg, hsl(0 0% 100%) 0%, hsl(200 20% 98%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(195 100% 45%) 0%, hsl(195 100% 55%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(200 20% 98%) 0%, hsl(200 25% 95%) 100%);
     
     /* Shadows */
-    --shadow-sm: 0 1px 2px 0 hsl(222 47% 11% / 0.05);
-    --shadow-md: 0 4px 6px -1px hsl(222 47% 11% / 0.08), 0 2px 4px -2px hsl(222 47% 11% / 0.05);
-    --shadow-lg: 0 10px 15px -3px hsl(222 47% 11% / 0.08), 0 4px 6px -4px hsl(222 47% 11% / 0.04);
-    --shadow-xl: 0 20px 25px -5px hsl(222 47% 11% / 0.1), 0 8px 10px -6px hsl(222 47% 11% / 0.05);
-    --shadow-glow: 0 0 40px -10px hsl(173 58% 39% / 0.3);
+    --shadow-sm: 0 1px 2px 0 hsl(200 50% 10% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(200 50% 10% / 0.08), 0 2px 4px -2px hsl(200 50% 10% / 0.05);
+    --shadow-lg: 0 10px 15px -3px hsl(200 50% 10% / 0.08), 0 4px 6px -4px hsl(200 50% 10% / 0.04);
+    --shadow-xl: 0 20px 25px -5px hsl(200 50% 10% / 0.1), 0 8px 10px -6px hsl(200 50% 10% / 0.05);
+    --shadow-glow: 0 0 40px -10px hsl(195 100% 45% / 0.3);
   }
 
   .dark {
